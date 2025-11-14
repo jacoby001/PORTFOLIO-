@@ -1,12 +1,16 @@
-function showSection(id) {
-  document.querySelectorAll(".content-section").forEach(section => {
-    section.classList.remove("active");
-  });
-  document.getElementById(id).classList.add("active");
-}
+function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
 
-// Navbar links
-document.getElementById("nav-about").addEventListener("click", () => showSection("about"));
-document.getElementById("nav-education").addEventListener("click", () => showSection("education"));
-document.getElementById("nav-projects").addEventListener("click", () => showSection("projects"));
-document.getElementById("nav-contact").addEventListener("click", () => showSection("contact"));
+    // Show chosen page
+    document.getElementById(pageId).classList.add("active");
+
+    // Highlight active nav link
+    document.querySelectorAll(".nav-links a").forEach(nav => {
+        nav.classList.remove("active");
+    });
+
+    document.getElementById("nav-" + pageId).classList.add("active");
+}
